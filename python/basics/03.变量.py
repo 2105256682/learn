@@ -12,15 +12,15 @@ a1, a2, a3, = 100, 200, 300
 
 # 变量类型
 num01 = 100
-print(type(num01))
+print(type(num01))  # <class 'int'>
 
 num02 = 0.12
 num03 = 3.1415926
-print(type(num02))
+print(type(num02))  # <class 'float'>
 
 # 明确指定当前变量类型
 num04: float = 9.8
-print(type(num04))
+print(type(num04))  # <class 'float'>
 
 b01 = True
 bo2 = False
