@@ -1,0 +1,170 @@
+# Python 基础 - 第2天笔记
+
+> 日期：2026-05-27
+
+---
+
+## 07. if 条件判断
+
+### 基本结构
+
+```python
+if 条件:
+    执行语句    # 条件为 True 时执行
+else:
+    执行语句    # 条件为 False 时执行
+```
+
+**注意**：冒号 `:` 不能少，缩进必须一致（通常 4 个空格）。
+
+```python
+age = int(input("please input your age:"))
+if age >= 18:
+    print(f"我已经成年了是{age}岁")
+else:
+    print("你还是未成年")
+```
+
+### if-elif-else 多分支
+
+```python
+score = 72
+if score >= 90:
+    print("优秀")
+elif 80 <= score < 90:
+    print("良好")
+elif 60 <= score < 80:
+    print("及格")
+else:
+    print("不及格")
+```
+
+| 关键字 | 含义 |
+|---|---|
+| `if` | 第一个判断条件 |
+| `elif` | 上面的条件不满足时，继续判断（可以有多个） |
+| `else` | 以上条件都不满足时执行 |
+
+### 逻辑运算符
+
+| 运算符 | 含义 | 例子 |
+|---|---|---|
+| `and` | 与，两边都 True 才 True | `a < 30 and is_student` |
+| `or` | 或，一边 True 就 True | `hour < 6 or hour > 22` |
+| `not` | 非，取反 | `not is_student` |
+
+```python
+# and 示例：同时满足
+a = 25
+is_student = True
+if a < 30 and is_student:
+    print("符合优惠条件")
+
+# or 示例：满足一个即可
+hour = 23
+if hour < 6 or hour > 22:
+    print("夜间时段")
+```
+
+### 成员运算符 in
+
+判断元素是否在列表/字符串中：
+
+```python
+lst = ["苹果", "香蕉", "橙子"]
+if "香蕉" in lst:
+    print("存在该水果")
+```
+
+### 区间判断
+
+```python
+month = 2
+if 3 <= month <= 5:
+    print("春季")       # 3~5月
+elif 6 <= month <= 8:
+    print("夏季")       # 6~8月
+elif 9 <= month <= 11:
+    print("秋季")       # 9~11月
+elif month == 12 or 1 <= month <= 2:
+    print("冬季")       # 12,1,2月
+else:
+    print("无效月份")
+```
+
+### 三元表达式（一行 if-else）
+
+```python
+# 语法：结果1 if 条件 else 结果2
+m = 35
+b = 56
+res = m if m < b else b   # 取较小值
+print(res)                # 35
+```
+
+---
+
+## 08. while 循环
+
+### 基本结构
+
+```python
+while 条件:
+    循环体        # 条件为 True 时反复执行
+    # 必须有让条件最终变为 False 的操作，否则死循环
+```
+
+### 典型例子：1-100 奇数和
+
+```python
+s_sum = 0        # 总和，初始为 0
+a = 1            # 循环变量
+while 1 <= a <= 100:
+    if a % 2 != 0:          # 判断奇数
+        s_sum = s_sum + a   # 累加
+    a = a + 1               # 循环变量 +1（关键！不然死循环）
+print(s_sum)     # 2500
+```
+
+### 嵌套循环：九九乘法表
+
+一个 while 里面再套一个 while：
+
+```python
+i = 1
+while i <= 9:            # 外层：控制行数（1~9）
+    j = 1
+    while j <= i:        # 内层：控制每行列数
+        print(f"{i} x {j} = {i * j}", end=" ")   # end=" " 不换行
+        j = j + 1
+    print()              # 一行打完，换行
+    i = i + 1
+```
+
+**输出效果**：
+```
+1 x 1 = 1
+2 x 1 = 2  2 x 2 = 4
+3 x 1 = 3  3 x 2 = 6  3 x 3 = 9
+...
+9 x 1 = 9  9 x 2 = 18  ...  9 x 9 = 81
+```
+
+### while 注意事项
+
+| 要点 | 说明 |
+|---|---|
+| 循环条件 | 必须能变为 False，否则死循环 |
+| 循环变量 | 要在循环体内更新（如 `a = a + 1`） |
+| `end=" "` | `print()` 默认换行，加 `end=" "` 可以在同一行打印 |
+| 嵌套顺序 | 外层走一步，内层走完整轮 |
+
+---
+
+## 今日总结
+
+- **if**：`if` → `elif` → `else`，条件成立执行对应代码块
+- **逻辑运算**：`and`（都满足）、`or`（满足一个）、`in`（判断包含）
+- **三元表达式**：`值1 if 条件 else 值2`，一行搞定简单判断
+- **while**：条件为 True 时反复执行，循环变量必须在循环体内更新
+- **嵌套循环**：外层控制大轮次，内层控制每轮细节，九九乘法表是经典练习
