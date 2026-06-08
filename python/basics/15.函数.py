@@ -9,8 +9,10 @@ def say_hello():
     """文档字符串：说明函数是做什么的"""
     print("你好，欢迎学习函数！")
 
+
 # 调用函数：函数名()
 say_hello()
+
 
 # ------------------------------------------------
 
@@ -19,11 +21,13 @@ say_hello()
 def add(a, b):
     """计算两个数的和并返回结果"""
     result = a + b  # 函数内部计算
-    return result   # return：把结果【返回】给调用者
+    return result  # return：把结果【返回】给调用者
+
 
 # 调用函数，传入 10 和 20
 # 10, 20 是【实际参数】
 print("2 + 3 =", add(2, 3))
+
 
 # ------------------------------------------------
 
@@ -39,13 +43,15 @@ def make_judgement(a, b, c):
     # 所以这里不需要写 bool()，直接返回表达式结果即可
     return a + b > c and b + c > a and a + c > b
 
+
 # 调用函数
 # 方式1：【位置参数】—— 按顺序传值（第一个给a，第二个给b，第三个给c）
 print("1, 2, 3 能构成三角形吗？", make_judgement(1, 2, 3))  # False
 print("3, 4, 5 能构成三角形吗？", make_judgement(3, 4, 5))  # True
 
 # 方式2：【关键字参数】—— 指定名字传值，顺序可以打乱
-print("b=5, a=3, c=4 结果：", make_judgement(b=5, a=3, c=4)) # True
+print("b=5, a=3, c=4 结果：", make_judgement(b=5, a=3, c=4))  # True
+
 
 # ------------------------------------------------
 
@@ -59,10 +65,12 @@ def fac(num):
     # 返回最终计算结果
     return result
 
+
 # 调用阶乘函数计算组合数
 m = 5
 n = 2
 print(f"从{m}个中选{n}个的组合数是：", fac(m) // fac(n) // fac(m - n))
+
 
 # ------------------------------------------------
 
@@ -70,6 +78,7 @@ print(f"从{m}个中选{n}个的组合数是：", fac(m) // fac(n) // fac(m - n)
 def print_info(name, *, age):
     """age 必须用 关键字=值 的形式传入"""
     print(f"姓名：{name}，年龄：{age}")
+
 
 # 正确调用：age 必须写 age=
 print_info('小明', age=20)
