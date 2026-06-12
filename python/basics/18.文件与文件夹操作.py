@@ -11,7 +11,7 @@ if os.path.exists("test.txt"):
     print("test.txt 存在")
     print("文件大小：", os.path.getsize("test.txt"))
 
-#  重命名
+# 4. 重命
 # os.rename("test.txt", "new.txt")
 
 # 5. 删除文件
